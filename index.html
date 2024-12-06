@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adversarial Multi-Task Learning Framework with GANs for Joint Semantic Segmentation and Depth Estimation with Perceptual Loss Integration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        #gif-section, #pdf-section {
+            margin: 20px;
+            text-align: center;
+        }
+        iframe {
+            width: 80%;
+            height: 400px;
+            border: none;
+        }
+        footer {
+            margin-top: 20px;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 10px;
+        }
+        .btn {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Model Training Viewer</h1>
+</header>
+
+<section id="gif-section">
+    <h2>Model GIF Viewer</h2>
+    <select id="model-select" onchange="updateGif()">
+        <option value="model1">Model 1</option>
+        <option value="model2">Model 2</option>
+        <option value="model3">Model 3</option>
+    </select>
+    <br><br>
+    <img id="model-gif" src="model1.gif" alt="Model GIF" width="500">
+    <p id="model-description">Model 1 Description</p>
+</section>
+
+<section id="pdf-section">
+    <h2>PDF Viewer</h2>
+    <iframe src="yourfile.pdf"></iframe>
+    <br>
+    <a href="yourfile.pdf" download>
+        <button class="btn">Download PDF</button>
+    </a>
+</section>
+
+<section id="github-link">
+    <h2>GitHub Repository</h2>
+    <a href="https://github.com/your-repo" target="_blank">
+        <button class="btn">View Code</button>
+    </a>
+</section>
+
+<footer>
+    <h3>Acknowledgments</h3>
+    <p>Special thanks to [Name/Team].</p>
+</footer>
+
+<script>
+    const gifs = {
+        model1: 'gifs/model1.gif',
+        model2: 'gifs/model2.gif',
+        model3: 'gifs/model3.gif'
+    };
+    const descriptions = {
+        model1: 'Model 1 Description',
+        model2: 'Model 2 Description',
+        model3: 'Model 3 Description'
+    };
+
+    function updateGif() {
+        const model = document.getElementById('model-select').value;
+        document.getElementById('model-gif').src = gifs[model];
+        document.getElementById('model-description').textContent = descriptions[model];
+    }
+</script>
+
+</body>
+</html>
