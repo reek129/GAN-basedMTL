@@ -19,6 +19,43 @@
             margin: 20px;
             text-align: center;
         }
+        #content-container {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        #gif-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #model-select {
+            font-size: 18px; /* Increases font size */
+            padding: 10px; /* Adds padding inside the dropdown */
+            height: 40px; /* Increases the height */
+            width: 200px; /* Adjust width if needed */
+            border-radius: 5px; /* Optional: rounded corners */
+            border: 1px solid #ccc; /* Optional: border styling */
+            background-color: #f9f9f9; /* Optional: background color */
+            cursor: pointer; /* Changes cursor to pointer */
+        }
+
+
+        #graph-container {
+            flex: 2;
+        }
+
+        .graph-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .graph-item {
+            text-align: center;
+        }
         iframe {
             width: 80%;
             height: 400px;
@@ -47,22 +84,86 @@
 
 <header>
     <h1>Adversarial Multi-Task Learning Framework with GANs for Joint Semantic Segmentation and Depth Estimation with Perceptual Loss Integration</h1>
+    <h2>Reek Majumder</h2>
+    <h3>Glenn Department of Civil Engineering</h3>
 </header>
 
-<section id="gif-section">
-    <h2>Model Trainng GIF Viewer</h2>
+<!-- <section id="gif-section">
+    <h2>Model Training and Analysis Section</h2>
     <select id="model-select" onchange="updateGif()">
         <option value="model1">Model 1</option>
         <option value="model2">Model 2</option>
         <option value="model3">Model 3</option>
     </select>
     <br><br>
-    <img id="model-gif" src="model1.gif" alt="Model GIF" width="500">
+    <img id="model-gif" src="gifs/model1/model1.gif" alt="Model GIF" width="500">
     <p id="model-description">Model 1 Description</p>
+
+    <div id="model-graphs">
+        <h3>Related Graphs</h3>
+        <div class="graph-item">
+            <h4 id="graph1-heading">Graph 1 Title</h4>
+            <img id="graph1" src="assets/model1/graph1.png" alt="Graph 1" width="300">
+        </div>
+        <div class="graph-item">
+            <h4 id="graph2-heading">Graph 2 Title</h4>
+            <img id="graph2" src="assets/model1/graph2.png" alt="Graph 2" width="300">
+        </div>
+        <div class="graph-item">
+            <h4 id="graph3-heading">Graph 3 Title</h4>
+            <img id="graph3" src="assets/model1/graph3.png" alt="Graph 3" width="300">
+        </div>
+        <div class="graph-item">
+            <h4 id="graph4-heading">Graph 4 Title</h4>
+            <img id="graph4" src="assets/model1/graph4.png" alt="Graph 4" width="300">
+        </div>
+    </div>
+</section> -->
+
+<section id="gif-section">
+    <h2>Model Training GIF Viewer</h2>
+    <select id="model-select" onchange="updateGif()">
+        <option value="model1">Model 1</option>
+        <option value="model2">Model 2</option>
+        <option value="model3">Model 3</option>
+    </select>
+    <br><br>
+    <div id="content-container">
+        <!-- GIF Section -->
+        <div id="gif-container">
+            <img id="model-gif" src="gifs/model1/model.gif" alt="Model GIF" width="500">
+            <p id="model-description">Model 1 Description</p>
+        </div>
+        <!-- Graph Section -->
+        <div id="graph-container">
+            <h3>Related Graphs</h3>
+            <div class="graph-grid">
+                <div class="graph-item">
+                    <h4 id="graph1-heading">Graph 1 Title</h4>
+                    <img id="graph1" src="gifs/model1/adv_loss.png" alt="Graph 1" width="300">
+                </div>
+                <div class="graph-item">
+                    <h4 id="graph2-heading">Graph 2 Title</h4>
+                    <img id="graph2" src="gifs/model1/combined_loss.png" alt="Graph 2" width="300">
+                </div>
+                <div class="graph-item">
+                    <h4 id="graph3-heading">Graph 3 Title</h4>
+                    <img id="graph3" src="gifs/model1/depth_loss.png" alt="Graph 3" width="300">
+                </div>
+                <div class="graph-item">
+                    <h4 id="graph4-heading">Graph 4 Title</h4>
+                    <img id="graph4" src="gifs/model1/seg_loss.png" alt="Graph 4" width="300">
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 
+
+
+
 <section id="pdf-section">
-    <h2>PDF Viewer</h2>
+    <h2>Paper Viewer</h2>
     <iframe src="./pdf/ML_IMG_synthesis.pdf"></iframe>
     <br>
     <a href="./pdf/ML_IMG_synthesis.pdf" download>
@@ -79,14 +180,14 @@
 
 <footer>
     <h3>Acknowledgments</h3>
-    <p>Special thanks to [Name/Team].</p>
+    <p>Special thanks to Dr. Siyu Huang for teaching us this course ML in Image Synthesis. It has greatly helped my understanding towards GANs and Diffusion Models</p>
 </footer>
 
 <script>
     const gifs = {
-        model1: 'gifs/model1.gif',
-        model2: 'gifs/model2.gif',
-        model3: 'gifs/model3.gif'
+        model1: 'gifs/model1/model1.gif',
+        model2: 'gifs/model2/model2.gif',
+        model3: 'gifs/model3/model3.gif'
     };
     const descriptions = {
         model1: 'Model 1 Description',
@@ -96,9 +197,32 @@
 
     function updateGif() {
         const model = document.getElementById('model-select').value;
-        document.getElementById('model-gif').src = gifs[model];
+
+        // const baseFolder = 'gifs/${model}/';
+        const baseFolder = `gifs/${model}/`;
+        // document.getElementById('model-gif').src = gifs[model];
+        document.getElementById('model-gif').src = `${baseFolder}/model.gif`;
         document.getElementById('model-description').textContent = descriptions[model];
+
+        // Update Graphs
+        const graphFilenames = ['adv_loss.png', 'combined_loss.png', 'depth_loss.png', 'seg_loss.png'];
+        const graphIds = ['graph1', 'graph2', 'graph3', 'graph4'];
+        const headingIds = ['graph1-heading', 'graph2-heading', 'graph3-heading', 'graph4-heading'];
+
+        graphFilenames.forEach((graphFile, index) => {
+            document.getElementById(graphIds[index]).src = `${baseFolder}${graphFile}`;
+            document.getElementById(headingIds[index]).textContent = graphFile.replace('.png', '').replace('_', ' ').toUpperCase();
+        });
+
+
+
     }
+
+    // Run `updateGif` for model1 on page load
+    window.onload = () => {
+        document.getElementById('model-select').value = 'model1'; // Set default selection
+        updateGif(); // Call the update function
+    };
 </script>
 
 </body>
