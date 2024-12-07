@@ -109,6 +109,41 @@
     <h4>Glenn Department of Civil Engineering</h4>
 </header>
 
+<section id="abstract-method-section" style="display: flex; justify-content: center; align-items: stretch; gap: 20px; margin: 40px;">
+    <!-- Abstract Block -->
+    <div id="abstract-block" style="flex: 1; padding: 20px; background-color: #f4f4f4; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);">
+        <h2 style="text-align: center; margin-bottom: 20px;">Abstract</h2>
+        <p style="text-align: justify; line-height: 1.6; font-size: 1em;">
+            This work describes a new adversarial MTL framework to solve semantic segmentation and depth estimation problems jointly. 
+            Building on the Cityscapes dataset, the solution utilizes a small MobileNetV3-Small encoder, shared and task-based generators, 
+            and discriminators in a GAN architecture. Combining loss functions such as Cross-Entropy, Dice, Scale-Invariant, Perceptual, 
+            and Adversarial losses gives robust, accurate, and perceptually consistent results. The two-level GAN architecture combines 
+            task-level objectives and joint feature learning to understand urban scenes.
+        </p>
+    </div>
+
+    <!-- Method Overview Block -->
+    <div id="method-block" style="flex: 1; padding: 20px; background-color: #f4f4f4; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);">
+        <h2 style="text-align: center; margin-bottom: 20px;">Method Overview</h2>
+        <p style="text-align: justify; line-height: 1.6; font-size: 1em;">
+            The approach proposed uses an MTL framework to compute semantic segmentation and depth estimation simultaneously for the 
+            Cityscapes dataset. A trained MobileNetV3-Small encoder extracts skip connection features to save spatial information. 
+            These are then refined by a standard generator via Conditional Refinement Pooling (CRP) blocks and compiled into 
+            task-independent representations. Task-driven generators and discriminators further optimize results for segmentation 
+            and depth estimation, while a multi-task discriminator ensures regularity and realism.
+        </p>
+        <p style="text-align: justify; line-height: 1.6; font-size: 1em;">
+            It implements deep preprocessing such as data augmentation, normalization, and logarithmic scaling of depth maps. Loss 
+            functions are divided into Cross-Entropy and Dice for segmentation, Scale-Invariant, Inverse Huber, Smoothness for depth 
+            estimation, and adversarial loss via GAN-based feedback for realism. Of the different GAN configurations, Hinge loss for 
+            task-specific loss and Wasserstein GAN with Gradient Penalty (WGAN-GP) for shared generator and multi-task discriminator 
+            was the most efficient, preventing adversarial training from falling out of alignment.
+        </p>
+    </div>
+</section>
+
+
+
 <section id="image-comparison-section" style="display: flex; justify-content: center; align-items: flex-start; gap: 40px; margin: 40px 20px;">
     <!-- Depth Maps Generation Image -->
     <div style="text-align: center; flex: 1;">
@@ -171,40 +206,46 @@
         </div>
     </div>
 </section> -->
-
-<section id="gif-section">
+<section id="gif-section" style="margin: 40px;">
     <h2>Model Training and Analysis Viewer</h2>
-    <select id="model-select" onchange="updateGif()">
+    <select id="model-select" onchange="updateGif()" style="margin: 20px; padding: 10px; font-size: 16px;">
         <option value="model1">Model 1</option>
         <option value="model2">Model 2</option>
         <option value="model3">Model 3</option>
     </select>
     <br><br>
-    <div id="content-container">
+    <div id="content-container" style="display: flex; justify-content: center; align-items: flex-start; gap: 40px;">
         <!-- GIF Section -->
-        <div id="gif-container">
-            <img id="model-gif" src="gifs/model1/model.gif" alt="Model GIF" width="500">
-            <p id="model-description">Model 1 Description</p>
+        <div id="gif-container" style="flex: 1; text-align: center;">
+            <h2>Change in Images during Training</h2>
+            <img id="model-gif" src="gifs/model1/model.gif" alt="Model GIF" 
+                 style="height: 100%; max-height: 600px; width: auto; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);">
+            <!-- Optional description can be added below the GIF -->
+            <!-- <p id="model-description" style="font-size: 1em; color: gray; margin-top: 10px;">Model 1 Description</p> -->
         </div>
         <!-- Graph Section -->
-        <div id="graph-container">
+        <div id="graph-container" style="flex: 1; text-align: center;">
             <h3>Related Graphs</h3>
-            <div class="graph-grid">
+            <div class="graph-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;">
                 <div class="graph-item">
                     <h4 id="graph1-heading">Graph 1 Title</h4>
-                    <img id="graph1" src="gifs/model1/adv_loss.png" alt="Graph 1" width="300">
+                    <img id="graph1" src="gifs/model1/adv_loss.png" alt="Graph 1" 
+                         style="width: 100%; max-width: 300px; height: auto; border: 1px solid #ddd; border-radius: 8px;">
                 </div>
                 <div class="graph-item">
                     <h4 id="graph2-heading">Graph 2 Title</h4>
-                    <img id="graph2" src="gifs/model1/combined_loss.png" alt="Graph 2" width="300">
+                    <img id="graph2" src="gifs/model1/combined_loss.png" alt="Graph 2" 
+                         style="width: 100%; max-width: 300px; height: auto; border: 1px solid #ddd; border-radius: 8px;">
                 </div>
                 <div class="graph-item">
                     <h4 id="graph3-heading">Graph 3 Title</h4>
-                    <img id="graph3" src="gifs/model1/depth_loss.png" alt="Graph 3" width="300">
+                    <img id="graph3" src="gifs/model1/depth_loss.png" alt="Graph 3" 
+                         style="width: 100%; max-width: 300px; height: auto; border: 1px solid #ddd; border-radius: 8px;">
                 </div>
                 <div class="graph-item">
                     <h4 id="graph4-heading">Graph 4 Title</h4>
-                    <img id="graph4" src="gifs/model1/seg_loss.png" alt="Graph 4" width="300">
+                    <img id="graph4" src="gifs/model1/seg_loss.png" alt="Graph 4" 
+                         style="width: 100%; max-width: 300px; height: auto; border: 1px solid #ddd; border-radius: 8px;">
                 </div>
             </div>
         </div>
@@ -214,25 +255,27 @@
 
 
 
+
 <section id="pdf-section">
     <h2>Paper Viewer</h2>
-    <iframe src="./pdf/ML_IMG_synthesis.pdf"></iframe>
+    <iframe src="./pdf/MTL_paper.pdf"></iframe>
     <br>
-    <a href="./pdf/ML_IMG_synthesis.pdf" download>
+    <a href="./pdf/MTL_paper.pdf" download>
         <button class="btn">Download PDF</button>
     </a>
 </section>
 
-<section id="github-link">
+<!-- <section id="github-link">
     <h2>GitHub Code Repository</h2>
     <a href="https://github.com/your-repo" target="_blank">
         <button class="btn">View Code</button>
     </a>
-</section>
+</section> -->
 
 <footer>
     <h3>Acknowledgments</h3>
-    <p>Special thanks to Dr. Siyu Huang for teaching us this course ML in Image Synthesis. It has greatly helped my understanding towards GANs and Diffusion Models</p>
+    <p>Special thanks to Dr. Siyu Huang for teaching us this course ML in Image Synthesis.
+         It has greatly helped my understanding towards GANs and Diffusion Models</p>
 </footer>
 
 <script>
