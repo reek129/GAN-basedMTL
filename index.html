@@ -5,16 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Final Project: ML in Image Synthesis</title>
     <style>
+        /* body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        } */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+            
         }
-        header {
+        header, footer {
             text-align: center;
-            padding: 20px;
-            background-color: #f4f4f4;
+            padding: 60px 20px; /* Adjust padding for content spacing */
+            background: linear-gradient(135deg, #522D80 70%, #F66733 30%); /* Purple and Orange gradient */
+            color: white; /* Ensure text is visible */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add a subtle shadow to the text */
+            background-size: cover;
+            background-position: center;
         }
+
+        /* header {
+            text-align: center;
+            padding: 20px 20px;
+            background: linear-gradient(135deg, #F66733, #522D80); /* Orange to purple gradient 
+            color: white;  Ensure text remains readable 
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);  Add shadow to text for contrast 
+            background-size: cover;
+            background-position: center;
+        } */
         #gif-section, #pdf-section {
             margin: 20px;
             text-align: center;
@@ -61,12 +81,12 @@
             height: 400px;
             border: none;
         }
-        footer {
+        /* footer {
             margin-top: 20px;
             background-color: #f4f4f4;
             text-align: center;
             padding: 10px;
-        }
+        } */
         .btn {
             padding: 10px 20px;
             background-color: #007BFF;
@@ -83,10 +103,42 @@
 <body>
 
 <header>
+    <h1>Final Project: Machine Learning Based Image Synthesis</h1>
     <h1>Adversarial Multi-Task Learning Framework with GANs for Joint Semantic Segmentation and Depth Estimation with Perceptual Loss Integration</h1>
-    <h2>Reek Majumder</h2>
-    <h3>Glenn Department of Civil Engineering</h3>
+    <h3>Reek Majumder</h3>
+    <h4>Glenn Department of Civil Engineering</h4>
 </header>
+
+<section id="image-comparison-section" style="display: flex; justify-content: center; align-items: flex-start; gap: 40px; margin: 40px 20px;">
+    <!-- Depth Maps Generation Image -->
+    <div style="text-align: center; flex: 1;">
+        <img src="gifs/images/depth_maps.png" alt="Depth Maps generation from crestereo models" 
+             style="height: 100%; max-height: 500px; width: auto; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);">
+        <p style="font-size: 1em; color: gray; margin-top: 10px;">Depth Maps generation from crestereo Deep Learning models</p>
+    </div>
+
+    <!-- Architecture Image -->
+    <div style="text-align: center; flex: 1;">
+        <img src="gifs/images/MTL.png" alt="Multi-Task Learning Architecture" 
+             style="height: 100%; max-height: 500px; width: auto; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);">
+        <p style="font-size: 1em; color: gray; margin-top: 10px;">Multi-Task Learning Architecture</p>
+    </div>
+</section>
+
+
+
+<!-- Add Segmentation and Depth Results Section -->
+<section id="results-section" style="text-align: center; margin: 20px;">
+    <div>
+        <h2>Depth Result</h2>
+        <img src="./gifs/images/depth_visualization_image_61.png" alt="Depth Results" style="width: 90%; margin-bottom: 20px;">
+    </div>
+    <div>
+        <h2>Segmentation Result</h2>
+        <img src="./gifs/images/segmentation_visualization_image_61.png" alt="Segmentation Results" style="width: 90%; margin-bottom: 20px;">
+    </div>
+    
+</section>
 
 <!-- <section id="gif-section">
     <h2>Model Training and Analysis Section</h2>
@@ -121,7 +173,7 @@
 </section> -->
 
 <section id="gif-section">
-    <h2>Model Training GIF Viewer</h2>
+    <h2>Model Training and Analysis Viewer</h2>
     <select id="model-select" onchange="updateGif()">
         <option value="model1">Model 1</option>
         <option value="model2">Model 2</option>
